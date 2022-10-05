@@ -37,68 +37,9 @@ class MainActivity : ComponentActivity() {
             MyComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting()
-
+                    GoogleButton()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = stringResource(id = R.string.app_name),
-            modifier = Modifier
-                .background(MaterialTheme.colors.primary)
-                .width(200.dp)
-                .padding(16.dp),
-            color = Color.White,
-            fontSize = MaterialTheme.typography.h6.fontSize,
-            fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Italic,
-            textAlign = TextAlign.Center
-        )
-        Text(buildAnnotatedString {
-            withStyle(style = ParagraphStyle(textAlign = TextAlign.Center)){
-                withStyle(style = SpanStyle(
-                    color = Color.Green,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                ){
-                    append("A")
-                }
-                append("B")
-                append("C")
-                append("D")
-            }
-        }, modifier = Modifier.width(200.dp))
-        SelectionContainer {
-            Column() {
-                Text(text = "Hello Abc")
-                DisableSelection {
-                    Text(text = "Hello Disabled")
-                }
-                Text(text = "Hello Abc")
-            }
-        }
-        CustomeText(text1 = "Hello", text2 = "World")
-    }
-}
-
-@Composable
-fun CustomeText(
-    text1: String,
-    text2: String
-){
-    Text(buildAnnotatedString {
-        withStyle(style = SpanStyle(fontSize = MaterialTheme.typography.subtitle1.fontSize)){
-            append(text1)
-        }
-        withStyle(style = SpanStyle(fontSize = MaterialTheme.typography.subtitle2.fontSize, fontWeight = FontWeight.Bold, baselineShift = BaselineShift.Superscript)){
-            append(text2)
-        }
-    })
 }
